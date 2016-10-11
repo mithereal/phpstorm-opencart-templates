@@ -64,6 +64,8 @@ WHERE `code` = '$module_name'
     
      protected function getForm()
     {
+		
+		  ${DS}this->response->setOutput(${DS}this->load->view('$module_name _list.tpl', ${DS}data, ${DS}this->lang,${DS}this));
     } 
     
     protected function getList()
@@ -73,8 +75,8 @@ WHERE `code` = '$module_name'
 
     ${DS}data = array_merge(${DS}data,${DS}filter_data);
     
-${DS}total = 0;
-${DS}pagination = new Pagination();
+	${DS}total = 0;
+	${DS}pagination = new Pagination();
        ${DS}pagination->total = ${DS}total;
        ${DS}pagination->page = ${DS}this->request->page;
         ${DS}pagination->limit = ${DS}this->config->get('config_limit_admin');
@@ -101,7 +103,7 @@ ${DS}pagination = new Pagination();
         array_unshift(${DS}data['stores'], ${DS}default_store);
 
 
-        ${DS}this->response->setOutput(${DS}this->load->view('$module_name _list.tpl', ${DS}ydata, ${DS}this->lang,${DS}));
+        ${DS}this->response->setOutput(${DS}this->load->view('$module_name _list.tpl', ${DS}data, ${DS}this->lang,${DS}this));
     }
     protected function delete()
     {
